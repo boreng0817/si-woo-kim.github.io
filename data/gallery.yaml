@@ -1,0 +1,40 @@
+# 사진을 추가하려면 static/images/gallery/ 폴더에 이미지를 넣고
+# src, alt, caption, category를 아래 형식으로 추가하세요.
+
+- src: "/images/gallery/conference-emnlp-2024.jpg"
+  alt: "EMNLP 2024 conference photo"
+  caption: "EMNLP 2024"
+  category: "Conference"
+  featured: true
+
+- src: "/images/gallery/conference-acmmm-2025.jpg"
+  alt: "ACM MM 2025 conference photo"
+  caption: "ACM MM 2025"
+  category: "Conference"
+
+- src: "/images/gallery/conference-lab-poster.jpg"
+  alt: "Poster session photo"
+  caption: "Poster session"
+  category: "Conference"
+
+- src: "/images/gallery/food-dinner.jpg"
+  alt: "Homemade dinner"
+  caption: "Weekend cooking"
+  category: "Cooking"
+  featured: true
+
+- src: "/images/gallery/food-dessert.jpg"
+  alt: "Homemade dessert"
+  caption: "Dessert experiment"
+  category: "Cooking"
+
+- src: "/images/gallery/knitting-scarf.jpg"
+  alt: "Knitting project"
+  caption: "Knitting in progress"
+  category: "Knitting"
+  featured: true
+
+- src: "/images/gallery/knitting-yarn.jpg"
+  alt: "Yarn and needles"
+  caption: "Color planning"
+  category: "Knitting"

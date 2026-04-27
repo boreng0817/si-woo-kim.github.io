@@ -1,0 +1,82 @@
+<header class="header">
+  <div class="header-inner">
+    {{/* Avatar — 실제 사진이 있으면 img, 없으면 이니셜 placeholder */}}
+    {{ $avatar := .Site.Params.avatar }}
+    {{ if (fileExists (printf "static%s" $avatar)) }}
+      <img class="avatar" src="{{ replaceRE "^/" "" $avatar | relURL }}" alt="{{ .Site.Params.name }}">
+    {{ else }}
+      <div class="avatar-placeholder">SW</div>
+    {{ end }}
+
+    <div class="header-info">
+      <h1 class="header-name">
+        {{ .Site.Params.name }}
+        <span class="header-name-ko">{{ .Site.Params.nameKo }}</span>
+      </h1>
+
+      <p class="header-role">
+        {{ .Site.Params.role }}<br>
+        <span class="muted">{{ .Site.Params.university }}</span><br>
+        <span class="advisor">
+          Advisor: <a href="{{ .Site.Params.advisorURL }}">{{ .Site.Params.advisor }}</a>
+        </span>
+      </p>
+
+      <div class="social-links">
+        <a class="social-link" href="mailto:{{ .Site.Params.email }}">
+          {{ partial "icons/email.html" . }} Email
+        </a>
+        <a class="social-link" href="{{ .Site.Params.scholar }}" target="_blank">
+          {{ partial "icons/scholar.html" . }} Scholar
+        </a>
+        <a class="social-link" href="{{ .Site.Params.github }}" target="_blank">
+          {{ partial "icons/github.html" . }} GitHub
+        </a>
+        <a class="social-link" href="{{ .Site.Params.openreview }}" target="_blank">
+          {{ partial "icons/openreview.html" . }} OpenReview
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<nav class="nav" id="main-nav" aria-label="Primary navigation">
+  <a href="#about">About</a>
+  <a href="#news">News</a>
+  <a href="#publications">Publications</a>
+  <a href="#experience">Experience</a>
+  <a href="#misc">Misc</a>
+</nav>
+
+<script>
+(function() {
+  const nav = document.getElementById('main-nav');
+  const links = nav.querySelectorAll('a');
+  const sectionIds = Array.from(links).map(a => a.getAttribute('href').slice(1));
+
+  function updateActive() {
+    let current = sectionIds[0];
+    for (const id of sectionIds) {
+      const el = document.getElementById(id);
+      if (el && el.getBoundingClientRect().top <= 96) {
+        current = id;
+      }
+    }
+    links.forEach(a => {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+    });
+  }
+
+  // smooth scroll on click
+  links.forEach(a => {
+    a.addEventListener('click', function(e) {
+      e.preventDefault();
+      const target = document.getElementById(this.getAttribute('href').slice(1));
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+  window.addEventListener('scroll', updateActive, { passive: true });
+  updateActive();
+})();
+</script>

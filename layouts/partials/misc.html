@@ -1,0 +1,59 @@
+<section class="section" id="misc">
+  <h2 class="section-title">Misc</h2>
+
+  <div class="misc-text">
+    {{ .Site.Params.hobbies | markdownify }}
+  </div>
+
+  {{ $galleryData := .Site.Data.gallery }}
+  {{ $captionBySrc := dict }}
+  {{ range $galleryData }}
+    {{ $captionBySrc = merge $captionBySrc (dict .src .caption) }}
+  {{ end }}
+
+  <div class="gallery-grid">
+    {{ $categories := slice
+      (dict "title" "Conference" "dir" "conference")
+      (dict "title" "Cooking" "dir" "cooking")
+      (dict "title" "Knitting" "dir" "knitting")
+    }}
+    {{ range $category := $categories }}
+    {{ $files := readDir (printf "static/images/gallery/%s" $category.dir) }}
+    {{ $dataItems := where $galleryData "category" $category.title }}
+    {{ if $files }}
+      {{ range first 1 (sort $files "Name" "desc") }}
+      {{ if not .IsDir }}
+      {{ $src := printf "/images/gallery/%s/%s" $category.dir .Name }}
+      {{ $nameWithoutExt := replaceRE "\\.[^.]+$" "" .Name }}
+      {{ $dateTag := index (findRE "^\\d{8}" $nameWithoutExt) 0 }}
+      {{ $nameWithoutPrefix := replaceRE "^(\\d{8}|\\d+)[-_ ]*" "" $nameWithoutExt }}
+      {{ $caption := index $captionBySrc $src | default (replaceRE "[-_]+" " " $nameWithoutPrefix | title) }}
+      <div class="gallery-item">
+        <img src="{{ replaceRE "^/" "" $src | relURL }}" alt="{{ $caption }}" loading="lazy">
+        <span class="gallery-item-label">{{ $category.title }}</span>
+        {{ with $dateTag }}<span class="gallery-date-tag">{{ dateFormat "Jan 2006" (time (printf "%s-%s-%s" (substr . 0 4) (substr . 4 2) (substr . 6 2))) }}</span>{{ end }}
+      </div>
+      {{ end }}
+      {{ end }}
+    {{ else }}
+    {{ with index (where $dataItems "featured" true) 0 }}
+    <div class="gallery-item">
+      {{ if (fileExists (printf "static%s" .src)) }}
+        <img src="{{ replaceRE "^/" "" .src | relURL }}" alt="{{ .alt }}" loading="lazy">
+      {{ else }}
+        <div class="gallery-placeholder">
+          {{ partial "icons/camera.html" $ }}
+          {{ .caption }}
+        </div>
+      {{ end }}
+      <span class="gallery-item-label">{{ $category.title }}</span>
+    </div>
+    {{ end }}
+    {{ end }}
+    {{ end }}
+  </div>
+  <div class="gallery-footer">
+    <p class="gallery-caption">Conference & life photos</p>
+    <a class="gallery-detail-link" href="{{ "misc/" | relURL }}">See detail</a>
+  </div>
+</section>

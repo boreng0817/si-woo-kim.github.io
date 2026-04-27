@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {{ partial "head.html" . }}
+</head>
+<body>
+  <div class="top-accent"></div>
+  <div class="container">
+    {{ block "main" . }}{{ end }}
+    {{ partial "footer.html" . }}
+  </div>
+</body>
+</html>

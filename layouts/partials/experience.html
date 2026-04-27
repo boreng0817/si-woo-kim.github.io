@@ -1,0 +1,35 @@
+<section class="section" id="experience">
+  <h2 class="section-title">Education & Experience</h2>
+
+  <div class="exp-list">
+    {{ range .Site.Data.experience }}
+    <div class="exp-item">
+      <span class="exp-icon">
+        {{ partial (printf "icons/%s.html" .icon) $ }}
+      </span>
+      <div>
+        <h4 class="exp-role">{{ .role }}</h4>
+        <p class="exp-org">
+          {{ .org }}
+          <span class="exp-period">{{ .period }}</span>
+        </p>
+        <p class="exp-detail">{{ .detail }}</p>
+      </div>
+    </div>
+    {{ end }}
+  </div>
+
+  <h3 class="awards-subtitle">Honors & Grants</h3>
+  {{ range .Site.Data.awards }}
+  <div class="award-card">
+    {{ partial (printf "icons/%s.html" .icon) $ }}
+    <div>
+      <strong>{{ .title }}</strong>
+      — {{ .org }}
+      {{ with .amount }} ({{ . }}){{ end }}
+      {{ with .year }}, {{ . }}{{ end }}
+      {{ with .period }}, {{ . }}{{ end }}
+    </div>
+  </div>
+  {{ end }}
+</section>

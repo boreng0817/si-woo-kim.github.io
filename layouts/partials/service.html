@@ -1,0 +1,9 @@
+<section class="section" id="service">
+  <h2 class="section-title">Academic Service</h2>
+  <p class="service-text">
+    <strong>Reviewer:</strong>
+    {{ range $year, $venues := .Site.Params.reviewer }}
+      {{ $year }} — {{ delimit $venues ", " }}.
+    {{ end }}
+  </p>
+</section>

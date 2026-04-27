@@ -1,0 +1,73 @@
+{{ define "main" }}
+  <nav class="nav misc-nav" aria-label="Misc navigation">
+    <a class="active" href="{{ "" | relURL }}#misc">Back home</a>
+  </nav>
+
+  <section class="section misc-page">
+    <div class="section-heading-row">
+      <h2 class="section-title">Misc</h2>
+    </div>
+
+    <div class="misc-text">
+      {{ .Site.Params.hobbies | markdownify }}
+    </div>
+
+    {{ $galleryData := .Site.Data.gallery }}
+    {{ $captionBySrc := dict }}
+    {{ range $galleryData }}
+      {{ $captionBySrc = merge $captionBySrc (dict .src .caption) }}
+    {{ end }}
+
+    {{ $categories := slice
+      (dict "title" "Conference" "dir" "conference")
+      (dict "title" "Cooking" "dir" "cooking")
+      (dict "title" "Knitting" "dir" "knitting")
+    }}
+
+    {{ range $category := $categories }}
+      {{ $files := readDir (printf "static/images/gallery/%s" $category.dir) }}
+      {{ $dataItems := where $galleryData "category" $category.title }}
+      {{ if or $files $dataItems }}
+      <div class="gallery-section">
+        <h3 class="gallery-section-title">{{ $category.title }}</h3>
+        <div class="gallery-detail-grid">
+          {{ if $files }}
+          {{ range sort $files "Name" "asc" }}
+          {{ if and (not .IsDir) (findRE "\\.(?i:jpg|jpeg|png|webp|gif)$" .Name) }}
+          {{ $src := printf "/images/gallery/%s/%s" $category.dir .Name }}
+          {{ $nameWithoutExt := replaceRE "\\.[^.]+$" "" .Name }}
+          {{ $dateTag := index (findRE "^\\d{8}" $nameWithoutExt) 0 }}
+          {{ $nameWithoutPrefix := replaceRE "^(\\d{8}|\\d+)[-_ ]*" "" $nameWithoutExt }}
+          {{ $caption := index $captionBySrc $src | default (replaceRE "[-_]+" " " $nameWithoutPrefix | title) }}
+          <figure class="gallery-card">
+            <div class="gallery-card-media">
+              <img src="{{ replaceRE "^/" "" $src | relURL }}" alt="{{ $caption }}" loading="lazy">
+              {{ with $dateTag }}<span class="gallery-date-tag">{{ dateFormat "Jan 2006" (time (printf "%s-%s-%s" (substr . 0 4) (substr . 4 2) (substr . 6 2))) }}</span>{{ end }}
+            </div>
+            <figcaption>{{ $caption }}</figcaption>
+          </figure>
+          {{ end }}
+          {{ end }}
+          {{ else }}
+          {{ range $dataItems }}
+          <figure class="gallery-card">
+            <div class="gallery-card-media">
+              {{ if (fileExists (printf "static%s" .src)) }}
+                <img src="{{ replaceRE "^/" "" .src | relURL }}" alt="{{ .alt }}" loading="lazy">
+              {{ else }}
+                <div class="gallery-placeholder">
+                  {{ partial "icons/camera.html" $ }}
+                  {{ .caption }}
+                </div>
+              {{ end }}
+            </div>
+            <figcaption>{{ .caption }}</figcaption>
+          </figure>
+          {{ end }}
+          {{ end }}
+        </div>
+      </div>
+      {{ end }}
+    {{ end }}
+  </section>
+{{ end }}

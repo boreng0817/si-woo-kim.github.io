@@ -1,0 +1,14 @@
+<section class="section" id="news">
+  <h2 class="section-title">News</h2>
+  <div>
+    {{ range .Site.Data.news }}
+    <div class="news-item">
+      <span class="news-date">{{ .date }}</span>
+      <span class="news-text">
+        {{ partial (printf "icons/%s.html" .icon) $ }}
+        {{ .text }}
+      </span>
+    </div>
+    {{ end }}
+  </div>
+</section>

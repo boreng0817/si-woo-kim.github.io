@@ -1,0 +1,88 @@
+<section class="section" id="publications">
+  <h2 class="section-title">Publications</h2>
+  <p style="font-size: 13px; color: #999; margin-bottom: 20px;">
+    * denotes equal contribution. Full list on
+    <a href="{{ .Site.Params.scholar }}">Google Scholar</a>.
+  </p>
+
+  {{/* Group publications by year, sorted descending */}}
+  {{ $pubs := where .Site.RegularPages "Section" "publications" }}
+  {{ $years := slice }}
+  {{ range $pubs }}
+    {{ $years = $years | append .Params.year }}
+  {{ end }}
+  {{ $years = $years | uniq | sort | collections.Reverse }}
+
+  {{ range $year := $years }}
+    <h3 class="pub-year">{{ $year }}</h3>
+
+    {{ $yearPubs := where $pubs "Params.year" $year }}
+    {{ range sort $yearPubs "Weight" "asc" }}
+    {{ $pub := . }}
+    <div class="pub-card{{ if .Params.method_image }} has-method-image{{ end }}">
+      <div class="pub-inner">
+        <span class="pub-tag">{{ .Params.tag }}</span>
+        {{ with .Params.method_image }}
+        <figure class="pub-method">
+          <img src="{{ replaceRE "^/" "" . | relURL }}" alt="{{ $pub.Params.method_alt | default (printf "%s method overview" $pub.Title) }}" loading="lazy">
+        </figure>
+        {{ end }}
+        <div class="pub-content">
+          <h4 class="pub-title">{{ .Title }}</h4>
+
+          <p class="pub-authors">
+            {{ range $i, $author := .Params.authors }}
+              {{- if $i }}, {{ end -}}
+              {{- if (findRE "Si-Woo Kim" $author) -}}
+                <span class="me">{{ $author }}</span>
+              {{- else -}}
+                {{ $author }}
+              {{- end -}}
+            {{ end }}
+          </p>
+
+          <div class="pub-meta">
+            <span class="venue-badge {{ .Params.venue_class }}">{{ .Params.venue }}</span>
+            <span class="pub-year-label">{{ .Params.year }}</span>
+
+            {{ if .Params.highlight }}
+            <span class="pub-highlight">
+              {{ partial "icons/star.html" $ }}
+              {{ .Params.highlight_text | default "First / Co-first Author" }}
+            </span>
+            {{ end }}
+          </div>
+
+          {{ with .Params.note }}
+          <p class="pub-note">{{ . }}</p>
+          {{ end }}
+
+          <div class="pub-links">
+            {{ with .Params.paper_url }}
+            {{ if ne . "#" }}
+            <a class="pub-link" href="{{ . }}" target="_blank">
+              {{ partial "icons/paper.html" $ }} Paper
+            </a>
+            {{ end }}
+            {{ end }}
+            {{ with .Params.code_url }}
+            {{ if ne . "#" }}
+            <a class="pub-link" href="{{ . }}" target="_blank">
+              {{ partial "icons/code.html" $ }} Code
+            </a>
+            {{ end }}
+            {{ end }}
+            {{ with .Params.project_url }}
+            {{ if ne . "#" }}
+            <a class="pub-link" href="{{ . }}" target="_blank">
+              {{ partial "icons/link.html" $ }} Project
+            </a>
+            {{ end }}
+            {{ end }}
+          </div>
+        </div>
+      </div>
+    </div>
+    {{ end }}
+  {{ end }}
+</section>

@@ -1,0 +1,29 @@
+baseURL = "https://boreng0817.github.io/si-woo-kim.github.io/"  # GitHub Pages project URL
+languageCode = "en-us"
+title = "Si-Woo Kim"
+
+# 커스텀 도메인 사용 시 아래 주석 해제
+# baseURL = "https://siwookim.com/"
+
+[params]
+  name = "Si-Woo Kim"
+  nameKo = "김시우"
+  role = "Integrated M.S./Ph.D. Student in Data Science"
+  university = "Hanyang University, Seoul"
+  advisor = "Prof. Dong-Jin Kim"
+  advisorURL = "https://sites.google.com/site/djkimcv"  # 지도교수 페이지 링크
+  email = "boreng0817@hanyang.ac.kr"
+  scholar = "https://scholar.google.com/citations?user=PSUfKEIAAAAJ&hl=ko"  # Google Scholar 링크
+  github = "https://github.com/boreng0817"
+  openreview = "https://openreview.net/profile?id=%7ESi-Woo_Kim1"  # OpenReview 링크
+  avatar = "/images/avatar.jpg"
+  description = "I am a second-year integrated M.S./Ph.D. student in the Department of Data Science at Hanyang University. My research focuses on Vision-Language Models, Zero-shot Image Captioning, and Computer Vision. I'm particularly interested in bridging synthetic and real data for zero-shot learning scenarios."
+  keywords = ["VLM", "Image Captioning", "Video Captioning", "Synthetic Data", "Zero-shot Learning", "Cross-modal Retrieval"]
+  hobbies = "When I'm not training models or writing papers, I enjoy **cooking** and **knitting**. I believe the patience required for both translates well to research."
+
+[params.reviewer]
+  "2026" = ["AAAI", "CVPR", "ECCV", "NeurIPS"]
+  "2025" = ["ACL SRW"]
+
+[markup.goldmark.renderer]
+  unsafe = true

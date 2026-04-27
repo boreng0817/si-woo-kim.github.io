@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 520" role="img" aria-labelledby="title desc">
+  <title id="title">IFCap method overview</title>
+  <desc id="desc">A simplified placeholder diagram for image-like retrieval and retrieval-based entity filtering.</desc>
+  <defs>
+    <marker id="arrow-orange" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#f59e0b"/>
+    </marker>
+    <marker id="arrow-blue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#3aa8c7"/>
+    </marker>
+    <marker id="arrow-gray" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#9ca3af"/>
+    </marker>
+    <filter id="soft-shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="7" flood-color="#111827" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <rect width="920" height="520" fill="#fffdfa"/>
+  <rect x="20" y="18" width="415" height="228" rx="28" fill="#fafafa" stroke="#a3a3a3" stroke-width="2" stroke-dasharray="7 5"/>
+  <rect x="485" y="18" width="415" height="228" rx="28" fill="#fafafa" stroke="#a3a3a3" stroke-width="2" stroke-dasharray="7 5"/>
+  <rect x="20" y="274" width="880" height="218" rx="28" fill="#fafafa" stroke="#a3a3a3" stroke-width="2" stroke-dasharray="7 5"/>
+
+  <text x="227" y="55" text-anchor="middle" font-family="Georgia, serif" font-size="25" font-weight="700" fill="#111827">Text-to-text Retrieval</text>
+  <text x="692" y="55" text-anchor="middle" font-family="Georgia, serif" font-size="25" font-weight="700" fill="#111827">Image-like Retrieval</text>
+  <text x="212" y="315" text-anchor="middle" font-family="Georgia, serif" font-size="23" font-weight="700" fill="#111827">CLIP Classifier Entity Retrieval</text>
+  <text x="673" y="315" text-anchor="middle" font-family="Georgia, serif" font-size="23" font-weight="700" fill="#111827">Retrieval-Based Entity Filtering</text>
+
+  <ellipse cx="227" cy="148" rx="178" ry="82" fill="#f4f4f5" stroke="#a3a3a3" stroke-width="2"/>
+  <ellipse cx="127" cy="148" rx="70" ry="48" fill="none" stroke="#f59e0b" stroke-width="2" stroke-dasharray="6 5"/>
+  <ellipse cx="315" cy="148" rx="70" ry="48" fill="none" stroke="#0891b2" stroke-width="2" stroke-dasharray="6 5"/>
+  <text x="227" y="97" text-anchor="middle" font-family="Georgia, serif" font-size="17" fill="#a3a3a3">Embedding Space</text>
+  <text x="127" y="211" text-anchor="middle" font-family="Georgia, serif" font-size="17" fill="#a3a3a3">Text</text>
+  <text x="315" y="211" text-anchor="middle" font-family="Georgia, serif" font-size="17" fill="#a3a3a3">Image</text>
+
+  <circle cx="90" cy="133" r="10" fill="#fbbf24" stroke="#d97706" stroke-width="2"/>
+  <circle cx="126" cy="125" r="10" fill="#fbbf24" stroke="#d97706" stroke-width="2"/>
+  <circle cx="112" cy="177" r="10" fill="#fbbf24" stroke="#d97706" stroke-width="2"/>
+  <path d="M88 133 L126 125 L112 177" fill="none" stroke="#f59e0b" stroke-width="2" marker-end="url(#arrow-orange)"/>
+  <polygon points="303,117 313,137 292,137" fill="#9bd4e4" stroke="#3192ad" stroke-width="2"/>
+  <polygon points="355,131 365,151 344,151" fill="#9bd4e4" stroke="#3192ad" stroke-width="2"/>
+  <polygon points="330,175 340,195 319,195" fill="#9bd4e4" stroke="#3192ad" stroke-width="2"/>
+  <circle cx="178" cy="181" r="11" fill="#d7bd2d" stroke="#b59b18" stroke-width="2" opacity="0.85"/>
+  <path d="M178 181 C225 174 270 165 330 175" fill="none" stroke="#3aa8c7" stroke-width="3" marker-end="url(#arrow-blue)"/>
+
+  <path d="M450 150 L478 150" stroke="#9ca3af" stroke-width="14" marker-end="url(#arrow-gray)"/>
+
+  <ellipse cx="692" cy="148" rx="178" ry="82" fill="#f4f4f5" stroke="#a3a3a3" stroke-width="2"/>
+  <ellipse cx="592" cy="148" rx="70" ry="48" fill="none" stroke="#f59e0b" stroke-width="2" stroke-dasharray="6 5"/>
+  <ellipse cx="780" cy="148" rx="70" ry="48" fill="none" stroke="#0891b2" stroke-width="2" stroke-dasharray="6 5"/>
+  <text x="692" y="97" text-anchor="middle" font-family="Georgia, serif" font-size="17" fill="#a3a3a3">Embedding Space</text>
+  <text x="592" y="211" text-anchor="middle" font-family="Georgia, serif" font-size="17" fill="#a3a3a3">Text</text>
+  <text x="780" y="211" text-anchor="middle" font-family="Georgia, serif" font-size="17" fill="#a3a3a3">Image</text>
+  <circle cx="555" cy="133" r="10" fill="#fbbf24" stroke="#d97706" stroke-width="2"/>
+  <circle cx="590" cy="125" r="10" fill="#fbbf24" stroke="#d97706" stroke-width="2"/>
+  <circle cx="578" cy="177" r="10" fill="#fbbf24" stroke="#d97706" stroke-width="2"/>
+  <polygon points="768,117 778,137 757,137" fill="#9bd4e4" stroke="#3192ad" stroke-width="2"/>
+  <polygon points="820,131 830,151 809,151" fill="#9bd4e4" stroke="#3192ad" stroke-width="2"/>
+  <polygon points="795,175 805,195 784,195" fill="#9bd4e4" stroke="#3192ad" stroke-width="2"/>
+  <circle cx="642" cy="181" r="11" fill="#d7bd2d" stroke="#b59b18" stroke-width="2" opacity="0.85"/>
+  <circle cx="760" cy="148" r="10" fill="#fee45c" stroke="#ef4444" stroke-width="3"/>
+  <path d="M642 181 C681 169 719 155 760 148" fill="none" stroke="#f59e0b" stroke-width="3" marker-end="url(#arrow-orange)"/>
+  <path d="M642 181 C696 180 745 176 795 175" fill="none" stroke="#3aa8c7" stroke-width="3" marker-end="url(#arrow-blue)"/>
+  <path d="M590 125 C650 130 700 139 760 148" fill="none" stroke="#ef4444" stroke-width="3" stroke-dasharray="7 5"/>
+  <text x="687" y="134" font-family="Georgia, serif" font-size="18" fill="#ef4444" font-style="italic">+e_r</text>
+
+  <rect x="52" y="345" width="180" height="96" fill="#dbeafe" stroke="#e5e7eb" filter="url(#soft-shadow)"/>
+  <rect x="52" y="345" width="180" height="46" fill="#bfdbfe"/>
+  <circle cx="156" cy="379" r="13" fill="#f97316"/>
+  <rect x="112" y="384" width="62" height="42" rx="6" fill="#1f2937"/>
+  <path d="M60 421 C105 402 156 407 224 387" stroke="#16a34a" stroke-width="9" fill="none"/>
+  <path d="M156 379 L330 370 M156 407 L330 401 M156 425 L330 434" stroke="#f59e0b" stroke-width="3" stroke-dasharray="7 4"/>
+  <text x="260" y="360" font-family="Georgia, serif" font-size="15" fill="#6b7280">{Softmax}</text>
+  <text x="352" y="374" font-family="Georgia, serif" font-size="17" font-weight="700" fill="#111827">man</text>
+  <text x="352" y="408" font-family="Georgia, serif" font-size="17" font-weight="700" fill="#111827">backpack</text>
+  <text x="352" y="442" font-family="Georgia, serif" font-size="17" font-weight="700" fill="#111827">motorcycle</text>
+  <text x="306" y="438" font-family="Arial, sans-serif" font-size="32" font-weight="700" fill="#ef4444">X</text>
+
+  <path d="M445 388 L474 388" stroke="#9ca3af" stroke-width="14" marker-end="url(#arrow-gray)"/>
+  <text x="542" y="372" font-family="Georgia, serif" font-size="17" fill="#111827" font-style="italic">"A man is taking a ride on his motorcycle."</text>
+  <text x="542" y="403" font-family="Georgia, serif" font-size="17" fill="#111827" font-style="italic">"A person riding a motorcycle on a narrow road."</text>
+  <text x="542" y="434" font-family="Georgia, serif" font-size="17" fill="#111827" font-style="italic">"A man sitting near a mountain."</text>
+  <text x="612" y="467" font-family="Georgia, serif" font-size="17" font-weight="700" fill="#111827">Hard Prompt: "motorcycle, man in image."</text>
+</svg>
