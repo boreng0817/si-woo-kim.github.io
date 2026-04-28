@@ -3,7 +3,7 @@ languageCode = "en-us"
 title = "Si-Woo Kim"
 
 # 커스텀 도메인 사용 시 아래 주석 해제
-# baseURL = "https://siwookim.com/"
+baseURL = "https://siwoo-kim.com/"
 
 [params]
   name = "Si-Woo Kim"
